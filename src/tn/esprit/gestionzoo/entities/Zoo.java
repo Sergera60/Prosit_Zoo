@@ -5,7 +5,8 @@ import java.util.Arrays;
 
 public class Zoo {
 
-    public static final int NUMBER_OF_CAGES = 25;
+
+    public static final int NUMBER_OF_CAGES = 3;
     private Animal[] animals;
     private String name, city;
     private int nbrAnimals;
@@ -82,15 +83,26 @@ private int count;
         System.out.println("Name: " + name + ", City: " + city + ", N° Cages: " + NUMBER_OF_CAGES + " N° animals: " + nbrAnimals);
     }
 
-    public boolean addAnimal(Animal animal) {
+    public void addAnimal(Animal animal) throws  ZooFullException, InvalidAgeException {
         if (searchAnimal(animal) != -1)
-            return false;
-        if (isZooFull())
-            return false;
+        {System.out.println("animal non trouvé");}
+
+        if (animal.getAge() < 0) {
+            throw new InvalidAgeException("L'âge de l'animal ne peut pas être négatif");
+        }
+        if (nbrAnimals >= NUMBER_OF_CAGES) {
+            throw new ZooFullException("Le zoo est plein");
+        }
+
+
+
         animals[nbrAnimals] = animal;
         nbrAnimals++;
-        return true;
+
     }
+
+
+
 
     public boolean removeAnimal(Animal animal) {
         int indexAnimal = searchAnimal(animal);

@@ -18,8 +18,6 @@ public class ZooManagement {
         Animal dog = new Animal("Canine", "Snoopy", 2, true);
 
 
-        System.out.println(myZoo.addAnimal(lion));
-        System.out.println(myZoo.addAnimal(dog));
 
         myZoo.displayAnimals();
 
@@ -33,9 +31,19 @@ public class ZooManagement {
 
         System.out.println(myZoo);
 
-        myZoo.addAnimal(lion);
-        myZoo.addAnimal(dog);
-        myZoo.addAnimal(dog2);
+
+
+        try {
+            myZoo.addAnimal(lion);
+            myZoo.addAnimal(dog);
+            myZoo.addAnimal(lion);
+            myZoo.addAnimal(dog);
+            myZoo.addAnimal(dog2);}
+        catch ( ZooFullException e){
+            System.out.println("Erreur: " + e.getMessage());
+        }
+        catch (InvalidAgeException a){System.out.println("Erreur: " + a.getMessage());}
+
         myZoo.displayAnimals();
 
 
