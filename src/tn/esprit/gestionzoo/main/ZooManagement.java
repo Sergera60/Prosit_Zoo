@@ -92,6 +92,19 @@ penguin1.swim();
         myZoo.maxPenguinSwimmingDepth();
         myZoo.displayNumberOfAquaticsByType();
 
+
+        terrestrial.eatMeat(Food.MEAT);
+        terrestrial.eatMeat(Food.PLANT);
+        terrestrial.eatMeat(Food.BOTH);
+        Aquatic a = new Aquatic("Fish", "Sardine", 2, true, "Sea"){
+            public void swim() {
+                System.out.println("This aquatic animal swims.");
+            }
+        } ;
+
+        a.eatMeat(Food.MEAT);
+        penguin.eatMeat(Food.MEAT);
+
     }
 
 }
